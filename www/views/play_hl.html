@@ -1,0 +1,18 @@
+<div class="content-video">
+    <div ng-if="isLoading">
+        <p class="loading"><i class='bx bx-loader-circle bx-spin'></i>Đang tải</p>
+    </div>
+    <div id="vbplayer"></div>
+    <div class="title-hl">
+        <p class="name-hl-video">{{DataHighlight.data.name}}</p>
+    </div>
+    <div class="list_hl_relate">
+        <span>Trận đấu khác</span>
+        <a ng-repeat="match in DataHighlight.data_related" ng-href="#!/highlight/play?id={{match.id}}">
+            <div class="item_hl_relate">
+                <img src="{{match.feature_image}}" alt="{{match.name}}">
+                <p>{{match.name}}</p>
+            </div>
+        </a>
+    </div>
+</div>

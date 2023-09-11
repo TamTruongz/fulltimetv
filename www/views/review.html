@@ -1,0 +1,42 @@
+<div class="content-match-live">
+<div class="title-match-live">
+<p>XEM FULL TRẬN ĐẤU</p>
+<p>TRANG {{page}}</p>
+</div>
+<hr>
+<div ng-if="isLoading">
+<p class="loading"><i class='bx bx-loader-circle bx-spin' ></i> Đang tải</p>
+</div>
+<a ng-if="ListFullMatch.data.highlight !== null" href="#!/highlight/play?id={{ ListFullMatch.data.highlight.id }}">
+<div class="item_hl_new">
+<img src="{{ ListFullMatch.data.highlight.feature_image }}" alt="{{ ListFullMatch.data.highlight.name }}">
+<p>{{ ListFullMatch.data.highlight.name }}</p>
+</div>
+</a>
+<div class="list__hl">
+<a ng-repeat="match in ListFullMatch.data.list" href="#!/highlight/play?id={{ match.id }}">
+<div class="item__hl">
+<img src="{{ match.feature_image }}" alt="">
+<p>{{ match.name }}</p>
+</div>
+</a>
+</div>
+<h1></h1>
+<li class="pagination__hl">
+<a href="#!/review?page=1">
+<ul class="item__pagehl"><i class='bx bx-chevrons-left'></i></ul>
+</a>
+<a href="#!/review?page={{prePage >= 1 ? prePage : 1}}">
+<ul class="item__pagehl"><i class='bx bxs-chevron-left'></i></ul>
+</a>
+<a ng-repeat="x in pages" href="#!/review?page={{ x }}">
+<ul class="item__pagehl {{page == x ? 'current_pagehl' : ''}}">{{ x }}</ul>
+</a>
+<a href="#!/review?page={{nextPage < total_pages ? nextPage : total_pages}}">
+<ul class="item__pagehl"><i class='bx bxs-chevron-right'></i></ul>
+</a>
+<a href="#!/review?page={{total_pages}}">
+<ul class="item__pagehl"><i class='bx bx-chevrons-right'></i></ul>
+</a>
+</li>
+</div>

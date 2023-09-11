@@ -1,0 +1,40 @@
+<div class="content-match-live">
+<div class="title-match-live">
+<p>TRỰC TIẾP <span class="count-live"></span></p>
+<select name="" id="" class="choose__tournament" ng-model="filterQuery" ng-change="filterLive()">
+<option value="" selected>Tất cả giải đấu</option>
+<option ng-repeat="tournament in uniqueTournaments" value="{{tournament}}">{{tournament}}</option>
+</select>
+</div>
+<hr>
+<div ng-if="isLoading">
+<p class="loading"><i class='bx bx-loader-circle bx-spin' ></i> Đang tải</p>
+</div>
+<div id="list-live">
+<a ng-repeat="match in MatchResult.slice().reverse()" href="#!/live?id={{match.id}}">
+<div class="item-live">
+<div class="name-league">
+<p>{{match.tournament.name}}</p>
+</div>
+<div class="content-live">
+<div class="team">
+<img src="{{ match.home.logo ? match.home.logo : './img/nonelogo.png'}}">
+<p>{{ match.home.name }}</p>
+</div>
+<div class="info-match">
+<span class="icon-live">Trực tiếp</span>
+<h2>{{ match.scores.home + " : " + match.scores.away }}</h2>
+<h4>{{ match.time_str }}</h4>
+</div>
+<div class="team">
+<img src="{{ match.away.logo ? match.away.logo : './img/nonelogo.png'}}">
+<p>{{ match.away.name }}</p>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div ng-if="MatchResult.length === 0" class="noMatchLive">
+<h3>Không có trận đấu nào đang diễn ra !!</h3>
+</div>
+</div>

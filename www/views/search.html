@@ -1,0 +1,61 @@
+<div>
+<div class="content-match-live">
+<div class="title-match-live">
+<p>TÌM KIẾM <span id="count__find">{{(filterType != 'Highlights' && filterType != 'Fullmatchs' ? results.length : 0) + (filterType != 'Calendar' && filterType != 'Fullmatchs' ? resultsHL.length : 0) + (filterType != 'Highlights' && filterType != 'Calendar' ? resultsFM.length : 0)}}</span> KẾT QUẢ</p>
+<select name="" id="" class="choose__tournament" ng-model="filterType">
+<option value="" selected>Tất cả</option>
+<option value="Calendar">Lịch đấu</option>
+<option value="Highlights">Highlights</option>
+<option value="Fullmatchs">Fullmatchs</option>
+</select>
+</div>
+<hr>
+<p class="key__search">Kết quả tìm kiếm từ khóa: "{{ query }}".</p>
+<div ng-if="results.length <= 0 && resultsHL.length <=0 && resultsFM.length <=0">
+<p class="loading">Không tìm thấy trận đấu phù hợp.</p>
+</div>
+<div ng-if="filterType == 'Calendar' && results.length <= 0 || filterType == 'Highlights' && resultsHL.length <= 0 || filterType == 'Fullmatchs' && resultsFM.length <= 0">
+<p class="loading">Không tìm thấy trận đấu nào !!</p>
+</div>
+<div ng-if="filterType != 'Highlights' && filterType != 'Fullmatchs'" id="list-live" ng-repeat="match in results">
+<a href="#!/live?id={{match.id}}" >
+<div class="item-live">
+<div class="name-league">
+<p>{{match.tournament.name}}</p>
+</div>
+<div class="content-live">
+<div class="team"><img src="{{ match.home.logo ? match.home.logo : './img/nonelogo.png' }}">
+    <p>{{ match.home.name }}</p>
+</div>
+<div class="info-match">
+    <span ng-class="(match.match_status) == 'live' ? 'icon-live' : 'icon-await'">{{ (match.match_status)== 'live' ? 'Trực tiếp' : 'Chưa tới' }}</span>
+    <h4>{{ formatTime(match.timestamp) }}</h4>
+    <h5>{{ formatDate(match.date) }}</h5>
+</div>
+<div class="team"><img src="{{ match.away.logo ? match.away.logo : './img/nonelogo.png' }}">
+    <p>{{ match.away.name }}</p>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div ng-if="filterType != 'Calendar' && filterType != 'Fullmatchs'" class="highlight__search">
+<a ng-repeat="match in resultsHL" href="#!/highlight/play?id={{ match.id }}">
+<div class="item_hl_new">
+<span class="hl__icon">HIGHLIGHT</span>
+<img src="{{ match.feature_image }}" alt="">
+<p>{{ match.name }}</p>
+</div>
+</a>
+</div>
+<div ng-if="filterType != 'Highlights' && filterType != 'Calendar'" class="highlight__search">
+<a ng-repeat="match in resultsFM" href="#!/highlight/play?id={{ match.id }}">
+<div class="item_hl_new">
+<span class="fm__icon">FULLMATCH</span>
+<img src="{{ match.feature_image }}" alt="">
+<p>{{ match.name }}</p>
+</div>
+</a>
+</div>
+</div>
+</div>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.example.myapp" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<name>FulltimeTV</name>
+<description>Trực tiếp bóng đá từ 90P trên FulltimeTV</description>
+<author email="tamvn110@gmail.com" href="https://tamtruongcoder.epizy.com">TamTruong</author>
+<content src="https://fulltimetvapp.000.pe/source/index.html" />
+<access origin="*" />
+<platform name="android">
+<preference name="Fullscreen" value="true" />
+<icon src="www/res/icon/android/logo.png" density="ldpi" />
+<icon src="www/res/icon/android/logo.png" density="mdpi" />
+<icon src="www/res/icon/android/logo.png" density="hdpi" />
+<icon src="www/res/icon/android/logo.png" density="xhdpi" />
+<icon src="www/res/icon/android/logo.png" density="xxhdpi" />
+<icon src="www/res/icon/android/logo.png" density="xxxhdpi" />
+<preference name="AndroidWindowSplashScreenAnimatedIcon" value="www/res/screen/android/screen-1.png" />
+</platform>
+</widget>
